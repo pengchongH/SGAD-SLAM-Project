@@ -185,36 +185,8 @@
   </div>
 </section>
 
-<section class="section">
-  <div class="container is-max-desktop">
 
-    <!-- Method. -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-full-width">
-        <!-- <h2 class="title is-3" style="margin-top: -20px">Demo</h2> -->
 
-        <video width="800"  poster="" id="Video" autoplay controls muted loop playsinline height="10%">
-          <source src="./videos/video_gs_center.mp4"
-                  type="video/mp4">
-        </video>
-        <div class="content has-text-justified">
-          <p align="center">
-            VTGaussian-SLAM can reconstruct a 3D scene from an RGBD sequence.
-          </p>
-
-        </div>
-        <div class="content has-text-justified">
-          <p align="center" style="font-size:12px;">
-            (The points with color are Gaussian centers that are tied with the GT depth images.)
-          </p>
-
-        </div>
-      </div>
-    </div>
-    <!--/ Animation. -->
-
-  </div>
-</section>
 
 
 
@@ -252,9 +224,22 @@
         <img src="./images/Overview.png" class="center">
         <div class="content has-text-justified">
           <p style="margin-top: 30px">
-            <b>Overview of our method.</b> Our tracking strategy with Gaussians representing geometry is shown from (a) to (e), achieving
+            <b>Overview of our method.</b> (a–e) Robust tracking with geometry Gaussians. 
+            We initialize the $i$-th frame's camera pose by using the constant speed assumption if no explicit illustration is provided (a) and optimize the pose $p_i$ by aligning depth to the scene using geometric similarity (b–c). 
+            New local Gaussians ($T_i$) are then merged into the global map ($T$) for continuous tracking (d). 
+            (f) Efficient mapping with appearance Gaussians. 
+            To improve scalability and rendering quality, we learn appearance Gaussians by progressively refining pixel-wise depth offsets, demonstrating clear improvements in rendering performance across iterations. 
+            Gaussian centers are shown for visual clarity.
+            
+            
+            
+            
+            
+            Our tracking strategy with Gaussians representing geometry is shown from (a) to (e), achieving
           robustness and efficiency. Our mapping learns Gaussians for better rendering, where the offset at each pixel is progressively adjusted for
-          better renderings, improving the scalability and efficiency. We show centers of Gaussians for better readability.
+          better renderings, improving the scalability and efficiency. We show centers of Gaussians for better readability. We initialize the camera pose using the con-
+stant speed assumption if no explicit illustration is provided. As illustrated in (a) to (c), we estimate the camera pose pi of the i-th frame
+through aligning its depth to the scene in terms of geometric similarity. After tracking the i-th frame, we add some Gaussians from Ti into T with the estimated pose pi and get the updated T ready to track the next frame, as shown in (d).
           </p>
         </div>
 
